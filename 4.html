@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+    <title>라우팅 프로토콜 - OSPF</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="grid">
+    <h1><a href="index.html">라우팅 프로코콜</a></h1>
+    <ol>
+        <li> <a href="1.html">스태틱</a></li>
+        <li> <a href="2.html">RIP</a></li>
+        <li> <a href="3.html">EIGRP</a></li>
+        <li> <a href="4.html">OSPF</a></li>
+    </ol>
+    <h2>OSPF</h2>
+<p><a href="https://www.youtube.com/watch?v=yxFTKa-N6mE" target="blank" title="OSPF">OSPF 란 Open Shortest Path First</a> 의 준말로 동적 라우팅 프로토콜로 대표적인 링크 상태 라우팅 프로토콜이다.
+</p>이것에서 링크 상태 프로토클이란, 인터넷에서 연결된 링크의 상태를 감시하여 최적의 경로를 선택한다는것이다.</p>
+
+최적의 경로가 의미하는것은 이것이 최단 거리 이거나, 또는 연결된 링크가 10M 와 100M 등 속도를 비교를 하여 더욱 전송 속도가 빠른 링크가 될수 있다.
+주로 중-대규모 네트워크를 구성할때 많이 사용하며 구역(area) 개념을 사용해 빠른 업데이트와 라우팅 테이블을 효과적으로 관리할수 있다.
+
+<P>VLSM을 지원하며, 여러개의 라우팅 경로를 하나로 묶어주는 기능이 매우 뛰어나다. 각 구역이 설정을 기반으로 하기 때문에 한 구역의 변동사항은 다른 구역에 영향을 주지 않게 설정할수 있어 안정적인 네트워크 구성이 가능하다.
+</p>
+<P>OSPF 설정 방법<br>
+    R1(config)#rotuer ospf <process-ID>  // 라우터끼리 서로 달라도 됨<br>
+    R1(config-router)#router-id x.x.x.x <br>
+    R1(config-router)#network y.y.y.y 0.0.0.0 area 0 </P>
+    <p>
+    <image src="OSPF.png"></image>
+    <P>Router(config-if)#router ospf 100<br>
+       Router(config-router)#network 10.10.10.0 0.0.0.255 a 0<br>
+       Router(config-router)#network 192.168.100.0 0.0.0.255 a 0</P>
+    </p>
+    <p><image src="area.png">
+            </image></p>
+            <p> R1 : Backbone Router, Internal Router ( Area 0 )<br>
+                R2 : Backbone Router, ABR ( Area 0, Area 1 )<br>
+                R3 : Internal Router ( Area 1 )</p>
+                </div>
+ </body>               
+</body>
+</html>
